@@ -1,0 +1,21 @@
+@import '../../../styles/index';
+.profile-container {
+    padding: 20px;
+    border: 2px solid $black;
+    .error-state {
+        color:  $error;
+    }
+    .save-state {
+        color: $save;
+    }
+    .load-state {
+        color: $load;
+    }
+
+    .mr-20 {
+        margin-right: $mr20;
+    }
+    .mr-5 {
+        margin-right: $mr5;
+    }
+}

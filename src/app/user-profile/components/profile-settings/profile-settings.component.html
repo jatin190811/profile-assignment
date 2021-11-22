@@ -1,0 +1,24 @@
+<div class="profile-container">
+    <select (change)="changeLang($event)">
+        <option value="en">English</option>
+        <option value="hn">Hindi</option>
+        <option value="ar">Arabic</option>
+    </select>
+    <h1>{{__('profile')}}</h1>
+    <div class="user-name">
+        <p>{{profileLabels.userName}} {{user?.userName}}</p>
+    </div>
+    <div>
+        <label for="firstName" class="mr-5">{{profileLabels.firstName}}</label>
+        <input type="text" id="firstName" name="firstName" class="name-input mr-20" [(ngModel)]="firstName" [disabled]="!isDataReady" (change)= "nameChanged()" />
+        <label for="firstName" class="mr-5">{{profileLabels.lastName}}</label>
+        <input type="text" id="lastName" name="lastName" class="name-input mr-20" [(ngModel)]="lastName" (change)= "nameChanged()" [disabled]="!isDataReady" />
+        <input type="button" value="Save" id="save-btn" (click)="saveProfile(firstName,lastName)" [disabled]="!isDataReady" />
+    </div>
+    <div *ngIf="user?.email && !errorMsg">
+        <p class="email mr-5">{{profileLabels.email}} {{user.email}}</p>
+    </div>
+    <p *ngIf="!isDataReady" class="load-state">{{profileStates.loading}}</p>
+    <p *ngIf="savingProfile" class="save-state">{{profileStates.saving}}</p>
+    <p *ngIf="errorMsg" class="error-state">{{profileStates.error}} {{errorMsg}}</p>
+</div>
